@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "cleanup": "node cleanup-positions.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:simple": "jest tests/MeteoraDLMMInteractionsServiceSimple.test.js tests/MeteoraDLMMKeeperServiceSimple.test.js",
+    "test:validator:start": "bash ./tests/setup-test-validator.sh",
+    "test:validator:stop": "bash ./tests/shutdown-test-validator.sh",
+    "test:fork": "bash ./tests/setup-test-validator.sh && NODE_ENV=test jest tests/MeteoraDLMMInteractionsServiceFork.test.js --forceExit && bash ./tests/shutdown-test-validator.sh"
+  },
+  "keywords": ["solana", "dlmm", "meteora", "defi", "liquidity"],
+  "author": "",
+  "license": "ISC",
+  "description": "Node.js server for interacting with Meteora DLMM pools on Solana",
+  "dependencies": {
+    "@meteora-ag/dlmm": "^1.4.2",
+    "@solana/web3.js": "^1.98.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3"
+  }
+}
